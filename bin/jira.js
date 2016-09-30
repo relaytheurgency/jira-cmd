@@ -101,7 +101,7 @@ requirejs([
     .action(function () {
       auth.setConfig(function (auth) {
         if (auth) {
-          ls.showInProgress();
+          ls.showInProcess();
         }
       });
     });
