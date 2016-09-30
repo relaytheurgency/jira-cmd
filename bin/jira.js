@@ -17,9 +17,8 @@ requirejs([
   '../lib/jira/create',
   '../lib/jira/sprint',
   '../lib/jira/transitions',
-  '../lib/jira/worklog',
-  '../lib/jira/showcomments'
-], function (program, config, auth, ls, describe, assign, comment, create, sprint, transitions, worklog, showcomments) {
+  '../lib/jira/worklog'
+], function (program, config, auth, ls, describe, assign, comment, create, sprint, transitions, worklog) {
 
   program
     .version('v0.5.4');
@@ -146,7 +145,7 @@ requirejs([
 
   program
     .command('comment <issue> [text]')
-    .description('Comment an issue.')
+    .description('Add a comment or show comments for an issue')
     .action(function (issue, text) {
       auth.setConfig(function (auth) {
         if (auth) {
@@ -224,17 +223,6 @@ requirejs([
       auth.setConfig(function (auth) {
         if (auth) {
           create.newIssue(projIssue);
-        }
-      });
-    });
-
-  program
-    .command('showcomments <issue>')
-    .description('Show all comments for an issue')
-    .action(function (issue) {
-      auth.setConfig(function (auth) {
-        if (auth) {
-          showcomments.show(issue);
         }
       });
     });
